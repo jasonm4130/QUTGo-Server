@@ -113,7 +113,7 @@ require 'QUTGo/setup.php';
             } else {
                 echo "0 results";
             }
-            $conn->close();
+            $connect->close();
 
             ?>
 
