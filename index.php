@@ -1,3 +1,9 @@
+<?php
+
+require 'QUTGo/setup.php';
+
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -93,6 +99,15 @@
                     </div>
                 </div>
             </nav>
+
+            <?php
+
+            $sql = "SELECT * FROM challenge";
+            $result = $connect->query($sql);
+
+            var_dump($result);
+
+            ?>
 
             <h2>What is QUT Go</h2>
             <p>QUT Go is an app developed by Venom Technologies as a final year IT capstone project. It allows students and staff studying at the QUT gardens point campus to sign up for an account using their Google accounts. They can then add friends, issue walking challenges or be challenged to walk more throughout the day.</p>
