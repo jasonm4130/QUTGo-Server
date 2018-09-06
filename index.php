@@ -105,7 +105,15 @@ require 'QUTGo/setup.php';
             $sql = "SELECT * FROM challenge";
             $result = $connect->query($sql);
 
-            var_dump($result);
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                    echo "id: " . $row["challenge_id"]. " Challengee: " . $row["challengee"]. " Challenger:  " . $row["challenger"]. " Block: " . $row["block"] . "<br>";
+                }
+            } else {
+                echo "0 results";
+            }
+            $conn->close();
 
             ?>
 
