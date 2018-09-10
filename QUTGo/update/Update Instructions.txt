@@ -1,0 +1,6 @@
+QUTgo Version Control
+
+All of these builds are capable of updating to the latest version.
+Latest version should always be called 'app-release.apk'
+When they are outdated, rename to 'app-release-w#.apk' where # is the week number of 2018 Semester 2.
+Drag new version into folder. That's it.
