@@ -16,7 +16,7 @@ header('Access-Control-Allow-Origin: *');
 
 /* Connect to the database */
 $connect = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE, PORT);
-mysqli_query($connect, "SET time_zone = '+12:00'");
+mysqli_query($connect, "SET time_zone = '+10:00'");
 
 /* If there is an error connecting to the database */
 if(mysqli_errno($connect)){
