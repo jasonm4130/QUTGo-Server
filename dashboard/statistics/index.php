@@ -201,12 +201,12 @@ require '../../QUTGo/setup.php';
                             foreach($thisWeek as $day){
                                 $sql = "SELECT * FROM step WHERE user_id = 262";
                                 $result = $connect->query($sql);
-                                echo $result['steps'];
-                                // if ($result) {
-                                //     // echo $row['steps'] . ',';
-                                // } else {
-                                //     echo '0,';
-                                // }
+                                $row = $result->fetch_array(MYSQL_BOTH);
+                                if ($row) {
+                                    echo $row['steps'] . ',';
+                                } else {
+                                    echo '0,';
+                                }
                             }
                             ?>
                     ],
@@ -219,16 +219,17 @@ require '../../QUTGo/setup.php';
                     label: 'Last Week',
                     data: [
                         <?php
-                            foreach($lastWeek as $day){
-                                $sql = "SELECT * FROM step WHERE user_id = 262 AND date = $day";
+                            foreach($thisWeek as $day){
+                                $sql = "SELECT * FROM step WHERE user_id = 262";
                                 $result = $connect->query($sql);
-                                // if ($result) {
-                                //     echo $row['steps'] . ',';
-                                // } else {
-                                //     echo '0,';
-                                // }
+                                $row = $result->fetch_array(MYSQL_BOTH);
+                                if ($row) {
+                                    echo $row['steps'] . ',';
+                                } else {
+                                    echo '0,';
+                                }
                             }
-                        ?>
+                            ?>
                         ],
                     borderColor: [
                         'rgba(255,46,99,1)'
