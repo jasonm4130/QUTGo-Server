@@ -131,7 +131,7 @@ require '../../QUTGo/setup.php';
         while($row = $result->fetch_assoc()) {
             $date=date('Y-m-d', strtotime($row['date']));
             if(strtotime( "previous monday" ) < $date && strtotime( "next monday" ) > $date){
-                echo $steps = $row['steps'];
+                echo $row['steps'];
             }
         }
     }
