@@ -160,11 +160,16 @@ require '../../QUTGo/setup.php';
 
     $lastWeek = getLastWeekDates();
 
+    $i = 0;
+
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
             if(in_array($row['date'], $lastWeek)){
-                echo $row['steps'];
+                $activity[$i] = new stdObject();
+                $activity[$i]->day = date('D', strtotime($row['date']));
+                $activity[$i]->steps = $row['steps'];
+                $i++;
             }
         }
     }
@@ -201,7 +206,36 @@ require '../../QUTGo/setup.php';
                     borderWidth: 1
                 }, {
                     label: 'This Week',
-                    data: [],
+                    data: [
+                            <?php for($i = 0; $i < 7; $i++){
+                                switch ($activity[$i]->day) {
+                                    case 'Monday':
+                                        echo $activity[$i]->steps . ',';
+                                        break;
+                                    case 'Tuesday':
+                                        echo $activity[$i]->steps . ',';
+                                        break;
+                                    case 'Wednesday':
+                                        echo $activity[$i]->steps . ',';
+                                        break;
+                                    case 'Thursday':
+                                        echo $activity[$i]->steps . ',';
+                                        break;
+                                    case 'Friday':
+                                        echo $activity[$i]->steps . ',';
+                                        break;
+                                    case 'Saturday':
+                                        echo $activity[$i]->steps . ',';
+                                        break;
+                                    case 'Sunday':
+                                        echo $activity[$i]->steps . ',';
+                                        break;
+                                    default;
+                                        echo '0,';
+                                        break;
+                                }
+                            }?>
+                        ],
                     borderColor: [
                         'rgba(255,46,99,1)'
                     ],
