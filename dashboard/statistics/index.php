@@ -194,7 +194,8 @@ require '../../QUTGo/setup.php';
                             <?php
                                 if ($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc()) {
-                                        switch (date('l', strtotime($row['date']))) {
+                                        $day = date('l', strtotime($row['date']));
+                                        switch ($day) {
                                             case 'Monday':
                                                 echo $row['steps'] . ',';
                                                 break;
