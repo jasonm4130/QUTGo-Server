@@ -1,38 +1,43 @@
 <?php
 /**
+* Author: Luke Goeree (26.09.2018)
+*
 * Require database connection and timezone setup code
 * 
 * @define (MySQLi_Connect) $connect - A MySQLi_Connect variable containing the database connection information
 */
 require 'setup.php';
-/* If the method, userid and groupid are set and not empty */
-if(isset($_GET['method']) && !empty($_GET['method']) && isset($_GET['userid']) && !empty($_GET['userid']) && isset($_GET['groupid']) && !empty($_GET['groupid'])){
+/* If the method and userid are set and not empty */
+if(isset($_GET['method']) && !empty($_GET['method']) && isset($_GET['userid']) && !empty($_GET['userid'])){
 	/* If the requested method exists */
 	if(function_exists($_GET['method'])){
 		/* Run the method */
-		$_GET['method']($connect, $_GET['userid'], $_GET['groupid']);
+		$_GET['method']($connect, $_GET['userid']);
 	}
 }
 /* Close the database connection */
 mysqli_close($connect);
 /**
-* removeGroupMember
+* removeFriend
 * 
-* Returns a JSON object containing a success/failure notification if the friendship request has been sent
+* Returns a JSON object containing a success/failure notification if the friendship removal request has been sent
 * 
 * @param (MySQLi_Connect) $connect - MySQLi_Connect variable containing the database connection information
-* @param (Integer) $userid - Integer variable containing the user's ID
-* @param (Integer) $groupid - Integer variable containing the group's ID
+* @param (Integer) $useridone - Integer variable containing the first user's ID
+* @param (Integer) $useridtwo - Integer variable containing the second user's ID
 * 
 * @return (JSON) $users - JSON encoded String variable containing a success/failure message
 */
-function removeGroupMember($connect, $userid, $groupid){	
+function removeFriend($connect, $useridone, $useridtwo){	
 	/*
-		DELETE FROM membership
-		WHERE group_id = '$groupid'
-		AND user = '$userid'
+	SQL Query for removing friendship lines from relationship database
+	Removes friendships regardless of who is listed as user_one and user_two in the database
+	
+		DELETE FROM relationship
+		WHERE (relationship.user_one = '$useridone' AND relationship.user_two = '$useridtwo')
+			OR (relationship.user_one = '$useridtwo' AND relationship.user_two = '$useridone')
 	*/
-	$sql = "DELETE FROM membership WHERE group_id = '$groupid' AND user = '$userid'";
+	$sql = "DELETE FROM friendship WHERE (relationship.user_one = '$useridone' AND relationship.user_two = '$useridtwo') OR (relationship.user_one = '$useridtwo' AND relationship.user_two = '$useridone')";
 	
 	/* Run the query */
 	$result = mysqli_query($connect, $sql);
@@ -42,9 +47,9 @@ function removeGroupMember($connect, $userid, $groupid){
 	
 	/* Set the result */
 	if($rows == 1){
-		$success = "Member removed successfully";
+		$success = "Friend removed successfully";
 	} else {
-		$success = "Error member not removed";
+		$success = "Error friend not removed";
 	}
 	
 	/* Encode array as json */
