@@ -158,13 +158,12 @@ require '../../QUTGo/setup.php';
     $sql = "SELECT * FROM step WHERE user_id = 262";
     $result = $connect->query($sql);
 
-    var_dump(getLastWeekDates());
+    $lastWeek = getLastWeekDates();
 
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
-            $date=date('Y-m-d', strtotime($row['date']));
-            if(strtotime( "monday last week" ) <= $date && strtotime( "previous monday" ) > $date){
+            if(in_array($row['date'], $lastWeek)){
                 echo $row['steps'];
             }
         }
