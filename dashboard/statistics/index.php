@@ -199,6 +199,7 @@ require '../../QUTGo/setup.php';
                     data: [
                             <?php
                             foreach($thisWeek as $day){
+                                echo $day;
                                 $sql = "SELECT * FROM step WHERE user_id = 262 AND date = $day";
                                 $result = $connect->query($sql);
                                 if ($result->num_rows > 0) {
