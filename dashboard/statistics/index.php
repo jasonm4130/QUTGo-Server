@@ -158,7 +158,7 @@ require '../../QUTGo/setup.php';
     $sql = "SELECT * FROM step WHERE user_id = 262";
     $result = $connect->query($sql);
 
-    echo getLastWeekDates();
+    var_dump(getLastWeekDates());
 
     if ($result->num_rows > 0) {
         // output data of each row
