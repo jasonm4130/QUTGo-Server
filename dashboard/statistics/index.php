@@ -117,7 +117,7 @@
 
     <?php
 
-    $sql = "SELECT * FROM STEP WHERE user_id = 265";
+    $sql = "SELECT * FROM step WHERE user_id = 265";
     $result = $connect->query($sql);
 
     ?>
