@@ -162,11 +162,12 @@ require '../../QUTGo/setup.php';
 
     $i = 0;
 
+    $activity[7] = new stdObject();
+
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
             if(in_array($row['date'], $lastWeek)){
-                $activity[$i] = new stdObject();
                 $activity[$i]->day = date('D', strtotime($row['date']));
                 $activity[$i]->steps = $row['steps'];
                 echo $activity[$i];
