@@ -1,6 +1,6 @@
 <?php
 
-require 'QUTGo/setup.php';
+require '/QUTGo/setup.php';
 
 ?>
 
