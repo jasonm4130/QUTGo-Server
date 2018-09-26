@@ -174,6 +174,8 @@ require '../../QUTGo/setup.php';
 
     $lastWeek = getLastWeekDates();
 
+    $thisWeek = getThisWeekDates();
+
     ?>
 
 
@@ -195,7 +197,7 @@ require '../../QUTGo/setup.php';
             data: {
                 labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"],
                 datasets: [{
-                    label: 'Last Week',
+                    label: 'This Week',
                     data: [
                         <?php
                                 if ($result->num_rows > 0) {
