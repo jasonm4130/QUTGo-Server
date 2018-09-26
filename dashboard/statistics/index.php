@@ -169,6 +169,7 @@ require '../../QUTGo/setup.php';
                 $activity[$i] = new stdObject();
                 $activity[$i]->day = date('D', strtotime($row['date']));
                 $activity[$i]->steps = $row['steps'];
+                echo $activity[$i];
                 $i++;
             }
         }
