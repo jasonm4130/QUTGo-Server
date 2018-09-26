@@ -58,7 +58,7 @@ function getFriendsList($connect, $userid, $type){
 		ON friends_table.friend_id = user.user_id
 		ORDER BY first_name, last_name ASC
 		*/
-		$sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.url, friends_table.timestamp FROM (SELECT derived_table.user_two AS friend_id, derived_table.timestamp FROM((SELECT user_one, user_two, timestamp FROM relationship WHERE user_one = '$userid' AND type = '$type') UNION (SELECT user_two AS user_one, user_one AS user_two, timestamp FROM relationship WHERE user_two = '$userid' AND type = '$type'))derived_table)friends_table INNER JOIN user ON friends_table.friend_id = user.user_id ORDER BY first_name, last_name ASC";
+		$sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.url, friends_table.timestamp FROM (SELECT derived_table.user_two AS friend_id, derived_table.timestamp FROM((SELECT user_one, user_two, timestamp FROM relationship WHERE user_one = '$userid' AND type = '$type'))derived_table)friends_table INNER JOIN user ON friends_table.friend_id = user.user_id ORDER BY first_name, last_name ASC";
 		
 		/* Run the query */
 		$result = mysqli_query($connect, $sql);
