@@ -57,9 +57,10 @@ function getFriendsNotInGroup($connect, $userid, $groupid){
 		FROM membership
 		WHERE group_id = '$groupid'
 	)
+	GROUP BY first_name
 	ORDER BY first_name, last_name ASC
 	*/
-	$sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.url, friends_table.timestamp FROM (SELECT derived_table.user_two AS friend_id, derived_table.timestamp FROM((SELECT user_one, user_two, timestamp FROM relationship WHERE user_one = '$userid' AND type = 'friends')UNION(SELECT user_two AS user_one, user_one AS user_two, timestamp FROM relationship WHERE user_two = '$userid' AND type = 'friends'))derived_table)friends_table INNER JOIN user ON friends_table.friend_id = user.user_id WHERE friends_table.friend_id NOT IN(SELECT user FROM membership WHERE group_id = '$groupid') ORDER BY first_name, last_name ASC";
+	$sql = "SELECT user.user_id, user.first_name, user.last_name, user.email, user.url, friends_table.timestamp FROM (SELECT derived_table.user_two AS friend_id, derived_table.timestamp FROM((SELECT user_one, user_two, timestamp FROM relationship WHERE user_one = '$userid' AND type = 'friends')UNION(SELECT user_two AS user_one, user_one AS user_two, timestamp FROM relationship WHERE user_two = '$userid' AND type = 'friends'))derived_table)friends_table INNER JOIN user ON friends_table.friend_id = user.user_id WHERE friends_table.friend_id NOT IN(SELECT user FROM membership WHERE group_id = '$groupid') GROUP BY first_name ORDER BY first_name, last_name ASC";
 	
 	/* Run the query */
 	$result = mysqli_query($connect, $sql);
