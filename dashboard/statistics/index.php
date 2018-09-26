@@ -199,13 +199,11 @@ require '../../QUTGo/setup.php';
                     data: [
                             <?php
                                 foreach($thisWeek as $day){
-                                    $sql = "SELECT * FROM step WHERE user_id = 262 AND step.date = $day";
+                                    $sql = "SELECT steps FROM step WHERE user_id = 262 AND step.date = $day";
                                     $result = $connect->query($sql);
-                                    if ($result->num_rows > 0) {
-                                        // output data of each row
-                                        while($row = $result->fetch_assoc()) {
-                                            echo $row['steps'] . ',';
-                                        }
+                                    $row = mysql_fetch_row($result);
+                                    if ($row[0]) {
+                                        echo $row[0] . ',';
                                     } else {
                                         echo '0,';
                                     }
@@ -222,13 +220,11 @@ require '../../QUTGo/setup.php';
                     data: [
                             <?php
                                 foreach($thisWeek as $day){
-                                    $sql = "SELECT * FROM step WHERE user_id = 262 AND step.date = $day";
+                                    $sql = "SELECT steps FROM step WHERE user_id = 262 AND step.date = $day";
                                     $result = $connect->query($sql);
-                                    if ($result->num_rows > 0) {
-                                        // output data of each row
-                                        while($row = $result->fetch_assoc()) {
-                                            echo $row['steps'] . ',';
-                                        }
+                                    $row = mysql_fetch_row($result);
+                                    if ($row[0]) {
+                                        echo $row[0] . ',';
                                     } else {
                                         echo '0,';
                                     }
