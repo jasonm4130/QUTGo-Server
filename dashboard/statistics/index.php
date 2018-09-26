@@ -201,11 +201,12 @@ require '../../QUTGo/setup.php';
                             foreach($thisWeek as $day){
                                 $sql = "SELECT * FROM step WHERE user_id = 262";
                                 $result = $connect->query($sql);
-                                $row = $result->fetch_array(MYSQL_BOTH);
-                                if ($row) {
-                                    echo $row['steps'] . ',';
-                                } else {
-                                    echo '0,';
+                                while($row = mysqli_fetch_array($result)){
+                                    if ($row) {
+                                        echo $row['steps'] . ',';
+                                    } else {
+                                        echo '0,';
+                                    }
                                 }
                             }
                             ?>
