@@ -195,7 +195,7 @@ require '../../QUTGo/setup.php';
                                 if ($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc()) {
                                         if(in_array($row['date'], $lastWeek)){
-                                            echo $row['steps'];
+                                            echo $row['steps'] . ',';
                                             // switch (date('D', strtotime($row['date']))) {
                                             //     case 'Monday':
                                             //         echo $row['steps'] . ',';
