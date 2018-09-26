@@ -199,7 +199,7 @@ require '../../QUTGo/setup.php';
                     data: [
                             <?php
                             foreach($thisWeek as $day){
-                                $sql = "SELECT * FROM step WHERE user_id = 262";
+                                $sql = "SELECT * FROM step WHERE user_id = 262 AND step.date = $day";
                                 $result = $connect->query($sql);
                                 while($row = mysqli_fetch_array($result)){
                                     if ($row) {
@@ -221,7 +221,7 @@ require '../../QUTGo/setup.php';
                     data: [
                         <?php
                             foreach($thisWeek as $day){
-                                $sql = "SELECT * FROM step WHERE user_id = 262";
+                                $sql = "SELECT * FROM step WHERE user_id = 262 AND step.date = $day";
                                 $result = $connect->query($sql);
                                 while($row = mysqli_fetch_array($result)){
                                     if ($row) {
