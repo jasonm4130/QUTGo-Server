@@ -120,6 +120,18 @@
     $sql = "SELECT * FROM step WHERE user_id = 265";
     $result = $connect->query($sql);
 
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            $date=date('Y-m-d', strtotime($row['date']));
+            if(strtotime( "previous monday" ) < $date && strtotime( "next monday" ) > $date){
+                echo $steps = $row['steps'];
+            }
+        }
+    }
+
+    $connect->close();
+
     ?>
 
 
@@ -150,15 +162,7 @@
                     borderWidth: 1
                 }, {
                     label: 'This Week',
-                    data: [<?php if ($result->num_rows > 0) {
-                                    // output data of each row
-                                    while($row = $result->fetch_assoc()) {
-                                        $date=date('Y-m-d', strtotime($row['date']));
-                                        if(strtotime( "previous monday" ) < $date && strtotime( "next monday" ) > $date){
-                                            echo $steps = $row['steps'];
-                                        }
-                                    }
-                                } ?>],
+                    data: [],
                     borderColor: [
                         'rgba(255,46,99,1)'
                     ],
@@ -246,7 +250,6 @@
             }
         });
     </script>
-    <?php $connect->close(); ?>
 </body>
 
 </html>
