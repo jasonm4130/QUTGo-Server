@@ -176,6 +176,9 @@ require '../../QUTGo/setup.php';
 
     $thisWeek = getThisWeekDates();
 
+    var_dump($thisWeek);
+    var_dump($lastWeek);
+
     ?>
 
 
@@ -199,7 +202,7 @@ require '../../QUTGo/setup.php';
                 datasets: [{
                     label: 'This Week',
                     data: [
-                        <?php
+                            <?php
                                 if ($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc()) {
                                         if(in_array($row['date'], $thisWeek)){
