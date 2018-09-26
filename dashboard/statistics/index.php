@@ -157,8 +157,8 @@ require '../../QUTGo/setup.php';
         // create the dates from Monday to Sunday
         for($i=0; $i<7; $i++)
         {
-            $prevMon = date("Y-m-d", strtotime("previous monday"));
-            $d = date("Y-m-d", strtotime( $prevMon + " + $i day" ) );
+            $thisMon = date("Y-m-d", strtotime("previous monday"));
+            $d = date("Y-m-d", strtotime( $thisMon + " + $i day" ) );
             $thisWeek[]=$d;
         }
     
