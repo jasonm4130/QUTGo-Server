@@ -198,17 +198,16 @@ require '../../QUTGo/setup.php';
                     label: 'This Week',
                     data: [
                             <?php
-                            foreach($thisWeek as $day){
-                                $sql = "SELECT * FROM step WHERE user_id = 262 AND step.date = $day";
-                                $result = $connect->query($sql);
-                                while($row = mysqli_fetch_array($result)){
+                                foreach($thisWeek as $day){
+                                    $sql = "SELECT * FROM step WHERE user_id = 262 AND step.date = $day";
+                                    $result = $connect->query($sql);
+                                    $row = $result->fetch_assoc();
                                     if ($row) {
                                         echo $row['steps'] . ',';
                                     } else {
                                         echo '0,';
                                     }
                                 }
-                            }
                             ?>
                     ],
                     borderColor: [
@@ -219,18 +218,17 @@ require '../../QUTGo/setup.php';
                 }, {
                     label: 'Last Week',
                     data: [
-                        <?php
-                            foreach($thisWeek as $day){
-                                $sql = "SELECT * FROM step WHERE user_id = 262 AND step.date = $day";
-                                $result = $connect->query($sql);
-                                while($row = mysqli_fetch_array($result)){
+                            <?php
+                                foreach($thisWeek as $day){
+                                    $sql = "SELECT * FROM step WHERE user_id = 262 AND step.date = $day";
+                                    $result = $connect->query($sql);
+                                    $row = $result->fetch_assoc();
                                     if ($row) {
                                         echo $row['steps'] . ',';
                                     } else {
                                         echo '0,';
                                     }
                                 }
-                            }
                             ?>
                         ],
                     borderColor: [
