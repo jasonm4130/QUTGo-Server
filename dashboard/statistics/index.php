@@ -150,6 +150,20 @@ require '../../QUTGo/setup.php';
         return $lastWeek;
     }
 
+    function getThisWeekDates()
+    {
+        $thisWeek = array();
+    
+        // create the dates from Monday to Sunday
+        for($i=0; $i<7; $i++)
+        {
+            $d = date("Y-m-d", strtotime( "previous monday" ) );
+            $thisWeek[]=$d;
+        }
+    
+        return $thisWeek;
+    }
+
     ?>
 
 
@@ -182,14 +196,41 @@ require '../../QUTGo/setup.php';
                 labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"],
                 datasets: [{
                     label: 'Last Week',
-                    data: [stepNumber(2000,45000), stepNumber(2000,45000), stepNumber(2000,45000), stepNumber(2000,45000), stepNumber(2000,45000), stepNumber(2000,45000), stepNumber(2000,45000)],
+                    data: [
+                        <?php
+                                if ($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc()) {
+                                        if(in_array($row['date'], $thisWeek)){
+                                            $date = date('l', strtotime($row['date']));
+                                            if ($date === 'Monday') {
+                                                echo $row['steps'] . ',';
+                                            } elseif ($date === 'Tuesday') {
+                                                echo $row['steps'] . ',';
+                                            } elseif ($date === 'Wednesday') {
+                                                echo $row['steps'] . ',';
+                                            } elseif ($date === 'Thursday') {
+                                                echo $row['steps'] . ',';
+                                            } elseif ($date === 'Friday') {
+                                                echo $row['steps'] . ',';
+                                            } elseif ($date === 'Saturday') {
+                                                echo $row['steps'] . ',';
+                                            } elseif ($date === 'Sunday') {
+                                                echo $row['steps'] . ',';
+                                            } else {
+                                                echo '0, ';
+                                            }
+                                        }
+                                    }
+                                }
+                            ?>
+                    ],
                     borderColor: [
                         'rgba(8,217,214,1)'
                     ],
                     backgroundColor: 'rgba(8,217,214,0.1)',
                     borderWidth: 1
                 }, {
-                    label: 'This Week',
+                    label: 'Last Week',
                     data: [
                             <?php
                                 if ($result->num_rows > 0) {
