@@ -195,7 +195,20 @@ require '../../QUTGo/setup.php';
                                 if ($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc()) {
                                         if(in_array($row['date'], $lastWeek)){
-                                            if (date('l', strtotime($row['date'])) == 'Monday') {
+                                            $date = date('l', strtotime($row['date']));
+                                            if ($date === 'Monday') {
+                                                echo $row['steps'] . ',';
+                                            } elseif ($date === 'Tuesday') {
+                                                echo $row['steps'] . ',';
+                                            } elseif ($date === 'Wednesday') {
+                                                echo $row['steps'] . ',';
+                                            } elseif ($date === 'Thursday') {
+                                                echo $row['steps'] . ',';
+                                            } elseif ($date === 'Friday') {
+                                                echo $row['steps'] . ',';
+                                            } elseif ($date === 'Saturday') {
+                                                echo $row['steps'] . ',';
+                                            } elseif ($date === 'Sunday') {
                                                 echo $row['steps'] . ',';
                                             } else {
                                                 echo '0, ';
