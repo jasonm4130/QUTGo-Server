@@ -160,24 +160,6 @@ require '../../QUTGo/setup.php';
 
     $lastWeek = getLastWeekDates();
 
-    $i = 0;
-
-    $activity[7] = new stdObject();
-
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            if(in_array($row['date'], $lastWeek)){
-                $activity[$i]->day = date('D', strtotime($row['date']));
-                $activity[$i]->steps = $row['steps'];
-                echo $activity[$i];
-                $i++;
-            }
-        }
-    }
-
-    $connect->close();
-
     ?>
 
 
@@ -209,34 +191,40 @@ require '../../QUTGo/setup.php';
                 }, {
                     label: 'This Week',
                     data: [
-                            <?php for($i = 0; $i < 7; $i++){
-                                switch ($activity[$i]->day) {
-                                    case 'Monday':
-                                        echo $activity[$i]->steps . ',';
-                                        break;
-                                    case 'Tuesday':
-                                        echo $activity[$i]->steps . ',';
-                                        break;
-                                    case 'Wednesday':
-                                        echo $activity[$i]->steps . ',';
-                                        break;
-                                    case 'Thursday':
-                                        echo $activity[$i]->steps . ',';
-                                        break;
-                                    case 'Friday':
-                                        echo $activity[$i]->steps . ',';
-                                        break;
-                                    case 'Saturday':
-                                        echo $activity[$i]->steps . ',';
-                                        break;
-                                    case 'Sunday':
-                                        echo $activity[$i]->steps . ',';
-                                        break;
-                                    default;
-                                        echo '0,';
-                                        break;
+                            <?php
+                                if ($result->num_rows > 0) {
+                                    // output data of each row
+                                    while($row = $result->fetch_assoc()) {
+                                        if(in_array($row['date'], $lastWeek)){
+                                            switch (date('D', strtotime($row['date']))) {
+                                                case 'Monday':
+                                                    echo $row['steps'] . ',';
+                                                    break;
+                                                case 'Tuesday':
+                                                    echo $row['steps'] . ',';
+                                                    break;
+                                                case 'Wednesday':
+                                                    echo $row['steps'] . ',';
+                                                    break;
+                                                case 'Thursday':
+                                                    echo $row['steps'] . ',';
+                                                    break;
+                                                case 'Friday':
+                                                    echo $row['steps'] . ',';
+                                                    break;
+                                                case 'Saturday':
+                                                    echo $row['steps'] . ',';
+                                                    break;
+                                                case 'Sunday':
+                                                    echo $row['steps'] . ',';
+                                                    break;
+                                                default;
+                                                    echo '0,';
+                                                    break;
+                                        }
+                                    }
                                 }
-                            }?>
+                            ?>
                         ],
                     borderColor: [
                         'rgba(255,46,99,1)'
@@ -325,6 +313,8 @@ require '../../QUTGo/setup.php';
             }
         });
     </script>
+
+    <?php $connect->close(); ?>
 </body>
 
 </html>
