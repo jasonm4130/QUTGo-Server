@@ -130,8 +130,7 @@ require '../../QUTGo/setup.php';
         // output data of each row
         while($row = $result->fetch_assoc()) {
             $date=date('Y-m-d', strtotime($row['date']));
-            echo $row['steps'] . ', ' . $row['date']; 
-            if(strtotime( "previous monday" ) < $date && strtotime( "next monday" ) > $date){
+            if(strtotime( "monday last week" ) <= $date && strtotime( "previous monday" ) > $date){
                 echo $row['steps'];
             }
         }
