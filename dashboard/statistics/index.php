@@ -123,13 +123,14 @@ require '../../QUTGo/setup.php';
 
     <?php
 
-    $sql = "SELECT * FROM step WHERE user_id = 265";
+    $sql = "SELECT * FROM step WHERE user_id = 262";
     $result = $connect->query($sql);
 
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
             $date=date('Y-m-d', strtotime($row['date']));
+            echo $row['steps'] . ', ' . $row['date']; 
             if(strtotime( "previous monday" ) < $date && strtotime( "next monday" ) > $date){
                 echo $row['steps'];
             }
