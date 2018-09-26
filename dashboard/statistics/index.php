@@ -201,7 +201,7 @@ require '../../QUTGo/setup.php';
                             foreach($thisWeek as $day){
                                 $sql = "SELECT * FROM step WHERE user_id = 262";
                                 $result = $connect->query($sql);
-                                var_dump($result);
+                                echo $result['steps'];
                                 // if ($result) {
                                 //     // echo $row['steps'] . ',';
                                 // } else {
