@@ -120,9 +120,6 @@
     $sql = "SELECT * FROM STEP WHERE user_id = 265";
     $result = $connect->query($sql);
 
-    
-    $connect->close();
-
     ?>
 
 
@@ -249,6 +246,7 @@
             }
         });
     </script>
+    <?php $connect->close(); ?>
 </body>
 
 </html>
