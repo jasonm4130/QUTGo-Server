@@ -191,40 +191,40 @@ require '../../QUTGo/setup.php';
                 }, {
                     label: 'This Week',
                     data: [
-                            <?php
-                                if ($result->num_rows > 0) {
-                                    // output data of each row
-                                    while($row = $result->fetch_assoc()) {
-                                        if(in_array($row['date'], $lastWeek)){
-                                            switch (date('D', strtotime($row['date']))) {
-                                                case 'Monday':
-                                                    echo $row['steps'] . ',';
-                                                    break;
-                                                case 'Tuesday':
-                                                    echo $row['steps'] . ',';
-                                                    break;
-                                                case 'Wednesday':
-                                                    echo $row['steps'] . ',';
-                                                    break;
-                                                case 'Thursday':
-                                                    echo $row['steps'] . ',';
-                                                    break;
-                                                case 'Friday':
-                                                    echo $row['steps'] . ',';
-                                                    break;
-                                                case 'Saturday':
-                                                    echo $row['steps'] . ',';
-                                                    break;
-                                                case 'Sunday':
-                                                    echo $row['steps'] . ',';
-                                                    break;
-                                                default;
-                                                    echo '0,';
-                                                    break;
-                                        }
-                                    }
-                                }
-                            ?>
+                            // <?php
+                            //     if ($result->num_rows > 0) {
+                            //         // output data of each row
+                            //         while($row = $result->fetch_assoc()) {
+                            //             if(in_array($row['date'], $lastWeek)){
+                            //                 switch (date('D', strtotime($row['date']))) {
+                            //                     case 'Monday':
+                            //                         echo $row['steps'] . ',';
+                            //                         break;
+                            //                     case 'Tuesday':
+                            //                         echo $row['steps'] . ',';
+                            //                         break;
+                            //                     case 'Wednesday':
+                            //                         echo $row['steps'] . ',';
+                            //                         break;
+                            //                     case 'Thursday':
+                            //                         echo $row['steps'] . ',';
+                            //                         break;
+                            //                     case 'Friday':
+                            //                         echo $row['steps'] . ',';
+                            //                         break;
+                            //                     case 'Saturday':
+                            //                         echo $row['steps'] . ',';
+                            //                         break;
+                            //                     case 'Sunday':
+                            //                         echo $row['steps'] . ',';
+                            //                         break;
+                            //                     default;
+                            //                         echo '0,';
+                            //                         break;
+                            //             }
+                            //         }
+                            //     }
+                            // ?>
                         ],
                     borderColor: [
                         'rgba(255,46,99,1)'
