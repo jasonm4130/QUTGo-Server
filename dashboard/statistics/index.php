@@ -195,32 +195,31 @@ require '../../QUTGo/setup.php';
                                 if ($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc()) {
                                         if(in_array($row['date'], $lastWeek)){
-                                            echo $row['steps'] . ',';
-                                            // switch (date('D', strtotime($row['date']))) {
-                                            //     case 'Monday':
-                                            //         echo $row['steps'] . ',';
-                                            //         break;
-                                            //     case 'Tuesday':
-                                            //         echo $row['steps'] . ',';
-                                            //         break;
-                                            //     case 'Wednesday':
-                                            //         echo $row['steps'] . ',';
-                                            //         break;
-                                            //     case 'Thursday':
-                                            //         echo $row['steps'] . ',';
-                                            //         break;
-                                            //     case 'Friday':
-                                            //         echo $row['steps'] . ',';
-                                            //         break;
-                                            //     case 'Saturday':
-                                            //         echo $row['steps'] . ',';
-                                            //         break;
-                                            //     case 'Sunday':
-                                            //         echo $row['steps'] . ',';
-                                            //         break;
-                                            //     default;
-                                            //         echo '0,';
-                                            //         break;
+                                            switch (date('l', strtotime($row['date']))) {
+                                                case 'Monday':
+                                                    echo $row['steps'] . ',';
+                                                    break;
+                                                case 'Tuesday':
+                                                    echo $row['steps'] . ',';
+                                                    break;
+                                                case 'Wednesday':
+                                                    echo $row['steps'] . ',';
+                                                    break;
+                                                case 'Thursday':
+                                                    echo $row['steps'] . ',';
+                                                    break;
+                                                case 'Friday':
+                                                    echo $row['steps'] . ',';
+                                                    break;
+                                                case 'Saturday':
+                                                    echo $row['steps'] . ',';
+                                                    break;
+                                                case 'Sunday':
+                                                    echo $row['steps'] . ',';
+                                                    break;
+                                                default;
+                                                    echo '0,';
+                                                    break;
                                         }
                                     }
                                 }
