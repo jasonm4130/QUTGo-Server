@@ -170,15 +170,9 @@ require '../../QUTGo/setup.php';
 
     <?php
 
-    $sql = "SELECT * FROM step WHERE user_id = 262";
-    $result = $connect->query($sql);
-
     $lastWeek = getLastWeekDates();
 
     $thisWeek = getThisWeekDates();
-
-    var_dump($thisWeek);
-    var_dump($lastWeek);
 
     ?>
 
@@ -204,30 +198,15 @@ require '../../QUTGo/setup.php';
                     label: 'This Week',
                     data: [
                             <?php
+                            foreach($thisWeek as $day){
+                                $sql = "SELECT * FROM step WHERE user_id = 262 AND date = $day";
+                                $result = $connect->query($sql);
                                 if ($result->num_rows > 0) {
-                                    while($row = $result->fetch_assoc()) {
-                                        if(in_array($row['date'], $thisWeek)){
-                                            $date = date('l', strtotime($row['date']));
-                                            if ($date === 'Monday') {
-                                                echo $row['steps'] . ',';
-                                            } elseif ($date === 'Tuesday') {
-                                                echo $row['steps'] . ',';
-                                            } elseif ($date === 'Wednesday') {
-                                                echo $row['steps'] . ',';
-                                            } elseif ($date === 'Thursday') {
-                                                echo $row['steps'] . ',';
-                                            } elseif ($date === 'Friday') {
-                                                echo $row['steps'] . ',';
-                                            } elseif ($date === 'Saturday') {
-                                                echo $row['steps'] . ',';
-                                            } elseif ($date === 'Sunday') {
-                                                echo $row['steps'] . ',';
-                                            } else {
-                                                echo '0, ';
-                                            }
-                                        }
-                                    }
+                                    echo $row['steps'] . ',';
+                                } else {
+                                    echo '0,';
                                 }
+                            }
                             ?>
                     ],
                     borderColor: [
@@ -238,33 +217,7 @@ require '../../QUTGo/setup.php';
                 }, {
                     label: 'Last Week',
                     data: [
-                            <?php
-                                if ($result->num_rows > 0) {
-                                    while($row = $result->fetch_assoc()) {
-                                        if(in_array($row['date'], $lastWeek)){
-                                            $date = date('l', strtotime($row['date']));
-                                            if ($date === 'Monday') {
-                                                echo $row['steps'] . ',';
-                                            } elseif ($date === 'Tuesday') {
-                                                echo $row['steps'] . ',';
-                                            } elseif ($date === 'Wednesday') {
-                                                echo $row['steps'] . ',';
-                                            } elseif ($date === 'Thursday') {
-                                                echo $row['steps'] . ',';
-                                            } elseif ($date === 'Friday') {
-                                                echo $row['steps'] . ',';
-                                            } elseif ($date === 'Saturday') {
-                                                echo $row['steps'] . ',';
-                                            } elseif ($date === 'Sunday') {
-                                                echo $row['steps'] . ',';
-                                            } else {
-                                                echo '0, ';
-                                            }
-                                        }
-                                    }
-                                }
-                            ?>
-
+                            
                         ],
                     borderColor: [
                         'rgba(255,46,99,1)'
