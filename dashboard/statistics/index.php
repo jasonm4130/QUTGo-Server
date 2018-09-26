@@ -158,7 +158,7 @@ require '../../QUTGo/setup.php';
         for($i=0; $i<7; $i++)
         {
             $thisMon = date("Y-m-d", strtotime("previous monday"));
-            $d = date("Y-m-d", strtotime( $thisMon + " + $i day" ) );
+            $d = date("Y-m-d", strtotime( $thisMon . " + $i day" ) );
             $thisWeek[]=$d;
         }
     
