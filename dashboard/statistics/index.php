@@ -115,6 +115,17 @@
     </div>
 
 
+    <?php
+
+    $sql = "SELECT * FROM STEP WHERE user_id = 265";
+    $result = $connect->query($sql);
+
+    
+    $connect->close();
+
+    ?>
+
+
     <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -142,7 +153,15 @@
                     borderWidth: 1
                 }, {
                     label: 'This Week',
-                    data: [stepNumber(2000,45000), stepNumber(2000,45000), stepNumber(2000,45000), stepNumber(2000,45000), stepNumber(2000,45000), stepNumber(2000,45000), stepNumber(2000,45000)],
+                    data: [<?php if ($result->num_rows > 0) {
+                                    // output data of each row
+                                    while($row = $result->fetch_assoc()) {
+                                        $date=date('Y-m-d', strtotime($row['date']));
+                                        if(strtotime( "previous monday" ) < $date && strtotime( "next monday" ) > $date){
+                                            echo $steps = $row['steps'];
+                                        }
+                                    }
+                                } ?>],
                     borderColor: [
                         'rgba(255,46,99,1)'
                     ],
