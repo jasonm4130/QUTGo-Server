@@ -202,7 +202,7 @@ require '../../QUTGo/setup.php';
                                     $sql = "SELECT * FROM step WHERE user_id = 262 AND step.date = $day";
                                     $result = $connect->query($sql);
                                     $row = $result->fetch_assoc();
-                                    if ($row) {
+                                    if ($row['steps']) {
                                         echo $row['steps'] . ',';
                                     } else {
                                         echo '0,';
@@ -223,7 +223,7 @@ require '../../QUTGo/setup.php';
                                     $sql = "SELECT * FROM step WHERE user_id = 262 AND step.date = $day";
                                     $result = $connect->query($sql);
                                     $row = $result->fetch_assoc();
-                                    if ($row) {
+                                    if ($row['steps']) {
                                         echo $row['steps'] . ',';
                                     } else {
                                         echo '0,';
