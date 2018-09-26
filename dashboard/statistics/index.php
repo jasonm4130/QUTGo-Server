@@ -176,19 +176,6 @@ require '../../QUTGo/setup.php';
 
     ?>
 
-    <?php
-    foreach($thisWeek as $day){
-        $sql = "SELECT * FROM step WHERE user_id = 262";
-        $result = $connect->query($sql);
-        var_dump($result);
-        if ($result) {
-            echo $row['steps'] . ',';
-        } else {
-            echo '0,';
-        }
-    }
-    ?>
-
 
     <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
@@ -210,7 +197,17 @@ require '../../QUTGo/setup.php';
                 datasets: [{
                     label: 'This Week',
                     data: [
-                            
+                            <?php
+                            foreach($thisWeek as $day){
+                                $sql = "SELECT * FROM step WHERE user_id = 262";
+                                $result = $connect->query($sql);
+                                if ($result) {
+                                    // echo $row['steps'] . ',';
+                                } else {
+                                    echo '0,';
+                                }
+                            }
+                            ?>
                     ],
                     borderColor: [
                         'rgba(8,217,214,1)'
@@ -225,7 +222,7 @@ require '../../QUTGo/setup.php';
                                 $sql = "SELECT * FROM step WHERE user_id = 262 AND date = $day";
                                 $result = $connect->query($sql);
                                 if ($result) {
-                                    echo $row['steps'] . ',';
+                                    // echo $row['steps'] . ',';
                                 } else {
                                     echo '0,';
                                 }
