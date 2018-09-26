@@ -199,7 +199,7 @@ require '../../QUTGo/setup.php';
                     data: [
                             <?php
                             foreach($thisWeek as $day){
-                                $sql = "SELECT * FROM step WHERE user_id = 262 AND step.date = $day";
+                                $sql = "SELECT * FROM step WHERE user_id = 262";
                                 $result = $connect->query($sql);
                                 if ($result->num_rows > 0) {
                                     echo $row['steps'] . ',';
