@@ -201,11 +201,12 @@ require '../../QUTGo/setup.php';
                             foreach($thisWeek as $day){
                                 $sql = "SELECT * FROM step WHERE user_id = 262";
                                 $result = $connect->query($sql);
-                                if ($result) {
-                                    // echo $row['steps'] . ',';
-                                } else {
-                                    echo '0,';
-                                }
+                                var_dump($result);
+                                // if ($result) {
+                                //     // echo $row['steps'] . ',';
+                                // } else {
+                                //     echo '0,';
+                                // }
                             }
                             ?>
                     ],
@@ -221,11 +222,11 @@ require '../../QUTGo/setup.php';
                             foreach($lastWeek as $day){
                                 $sql = "SELECT * FROM step WHERE user_id = 262 AND date = $day";
                                 $result = $connect->query($sql);
-                                if ($result) {
-                                    // echo $row['steps'] . ',';
-                                } else {
-                                    echo '0,';
-                                }
+                                // if ($result) {
+                                //     echo $row['steps'] . ',';
+                                // } else {
+                                //     echo '0,';
+                                // }
                             }
                         ?>
                         ],
