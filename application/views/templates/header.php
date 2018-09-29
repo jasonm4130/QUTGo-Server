@@ -12,6 +12,10 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?= link_tag('/assets/css/main.css'); ?>
+	<?= script_tag('/assets/js/jQuery-3.3.1.js'); ?>
+	<?= script_tag('/assets/js/Chart.min.js'); ?>
+	<?= script_tag('/assets/js/bootstrap.min.js'); ?>
+	<?= script_tag('/assets/js/main.js'); ?>
 </head>
 
 <body>
