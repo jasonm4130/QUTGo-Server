@@ -11,8 +11,11 @@ class Statistics extends CI_Controller {
 
     public function index()
     {
-        $data['stats_current'] = $this->stats_model->get_stats_current();
-        $data['stats_past'] = $this->stats_model->get_stats_past();
+        $data = array();
+        $data['steps'] = $this->stats_model->get_stats();
+        $data['lastWeek'] = $this->stats_model->getLastWeekDates();
+        $data['thisWeek'] = $this->stats_model->getThisWeekDates();
+
         $data['title'] = 'Statistics';
 
         $this->load->view('templates/header', $data);
