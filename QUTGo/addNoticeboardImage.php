@@ -67,7 +67,7 @@ function saveImage(){
 	$newfilename = round(microtime(true)) . '.' . end($temp);
 	
 	/* Setup file path */
-	$file_path =  "images/" . $newfilename;
+	$file_path =  "/images/" . $newfilename;
 	
 	/* Save image to webserver */
 	move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $file_path);
