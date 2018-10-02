@@ -20,6 +20,9 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 application/config/config.php
 application/config/database.php
 
+# Ignore Images Folder
+/images
+
 # IDE Files
 #-------------------------
 /nbproject/
