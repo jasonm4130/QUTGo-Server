@@ -12,7 +12,9 @@ class Statistics extends CI_Controller {
     public function index()
     {
         $data = array();
-        $data['steps'] = $this->stats_model->get_stats();
+        $this->load->library('session');
+        $id = $this->session->userdata('user_id');
+        $data['steps'] = $this->stats_model->get_stats($id);
         $data['lastWeek'] = $this->stats_model->getLastWeekDates();
         $data['thisWeek'] = $this->stats_model->getThisWeekDates();
 
