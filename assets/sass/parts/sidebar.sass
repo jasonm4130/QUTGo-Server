@@ -17,6 +17,9 @@
   .sidebar-header
     padding: 20px
     background: $qutBlue
+  #pageSubmenu
+    a
+      padding-left: 1em
   ul
     &.components
       padding: 20px 0
@@ -60,6 +63,16 @@ ul
     background: $qutBlue
   &.CTAs
     padding: 20px
+    margin-bottom: 0
+    border-bottom: 1px solid #47748b
+    a
+      text-align: center
+      font-size: 0.9em
+      display: block
+      border-radius: 5px
+      margin-bottom: 5px
+  &.login
+    padding: 20px
     a
       text-align: center
       font-size: 0.9em
@@ -68,6 +81,9 @@ ul
       margin-bottom: 5px
 
 a
+  &.login-btn
+    background: #fff
+    color: $qutBlue
   &.download
     background: #fff
     color: $qutBlue

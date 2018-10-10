@@ -58,8 +58,7 @@ class User extends CI_Controller {
         }
         else{
             $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-            $this->load->view("login.php");
-    
+            redirect($this->uri->uri_string());
         }
     }
 

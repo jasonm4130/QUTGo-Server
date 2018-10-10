@@ -29,7 +29,7 @@
 			</div>
 
 			<ul class="list-unstyled components">
-				<p>Welcome Cameron Cross</p>
+				<p>Welcome User Name</p>
 				<li class="active">
 					<a href="#">Home</a>
 				</li>
@@ -58,6 +58,11 @@
 				</li>
 				<li>
 					<a href="#" class="article">Report an Issue</a>
+				</li>
+			</ul>
+			<ul class="list-unstyled login">
+				<li>
+					<a data-toggle="modal" href="#loginModal" class="login-btn">Login</a>
 				</li>
 			</ul>
 		</nav>

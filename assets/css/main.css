@@ -7390,6 +7390,8 @@ a {
   #sidebar .sidebar-header {
     padding: 20px;
     background: #003F72; }
+  #sidebar #pageSubmenu a {
+    padding-left: 1em; }
   #sidebar ul.components {
     padding: 20px 0;
     border-bottom: 1px solid #47748b; }
@@ -7432,13 +7434,28 @@ ul ul a {
   background: #003F72; }
 
 ul.CTAs {
-  padding: 20px; }
+  padding: 20px;
+  margin-bottom: 0;
+  border-bottom: 1px solid #47748b; }
   ul.CTAs a {
     text-align: center;
     font-size: 0.9em;
     display: block;
     border-radius: 5px;
     margin-bottom: 5px; }
+
+ul.login {
+  padding: 20px; }
+  ul.login a {
+    text-align: center;
+    font-size: 0.9em;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px; }
+
+a.login-btn {
+  background: #fff;
+  color: #003F72; }
 
 a.download {
   background: #fff;
