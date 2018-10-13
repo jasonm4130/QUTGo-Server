@@ -7,7 +7,7 @@ $(document).on("click", "#loginModal .btn", function (e) {
 	console.log('The form submitted');
 	$.ajax({
 		type: "POST",
-		url: "user/login_user",
+		url: "/user/login_user",
 		data: {
 			user_email: $('input[name=user_email]').val(),
 			user_password: $('input[name=user_password]').val(),
