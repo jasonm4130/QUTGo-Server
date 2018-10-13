@@ -4,9 +4,10 @@ class User_model extends CI_model{
     public function register_user($user){
         $this->db->select('*');
         $this->db->from('user');
-        $this->db->where('email',$email);
+        $this->db->where('email',$user['email']);
         $query=$this->db->get();
         if($query->num_rows() == 1){
+            $this->db->where('email',$user['email']);
             $this->db->update('user', $user);
         } else {
             $this->db->insert('user', $user);

@@ -22,7 +22,6 @@ class User extends CI_Controller {
         'email'=>$this->input->post('user_email'),
         'password'=>md5($this->input->post('user_password')),
         );
-        print_r($user);
         $email_check=$this->user_model->email_check($user['email']);
         if($email_check){
             $this->user_model->register_user($user);
