@@ -2,20 +2,21 @@ $(document).ready(function () {
 
 });
 
-$(document).on("click", "#loginModal .btn", function () {
+$(document).on("click", "#loginModal .btn", function (e) {
+	e.preventDefault()
+	console.log('The form submitted');
 	$.ajax({
 		type: "POST",
 		url: "user/login_user",
 		data: {
-			user_email: $()
+			user_email: $('input[name=user_email]').val(),
+			user_password: $('input[name=user_password]').val(),
 		},
-		success: function (data) {
-
-			//and from data parse your json data and show error message in the modal
-			var obj = $.parseJSON(data);
-			if (obj != null) {
-				$('#err_mssg').html(obj['error_message']);
-			}
-		}
+		success: function () {
+			$('.messages .alert-success').toggle();
+		},
+		error: function () {
+			$('.messages .alert-danger').toggle();
+		},
 	});
 });

@@ -19,25 +19,14 @@
 			<div class="modal-body">
             <div class="panel-heading">
 					</div>
-					<?php
-                    $success_msg= $this->session->flashdata('success_msg');
-                    $error_msg= $this->session->flashdata('error_msg');
- 
-                  if($success_msg){
-                    ?>
-					<div class="alert alert-success">
-						<?php echo $success_msg; ?>
+					<div class="messages">
+						<div class="alert alert-success">
+							Login Successful
+						</div>
+						<div class="alert alert-danger">
+							Error, please check your email and password
+						</div>
 					</div>
-					<?php
-                  }
-                  if($error_msg){
-                    ?>
-					<div class="alert alert-danger">
-						<?php echo $error_msg; ?>
-					</div>
-					<?php
-                  }
-                  ?>
 
 					<div class="panel-body">
 						<form role="form">
@@ -48,7 +37,6 @@
 								<div class="form-group">
 									<input class="form-control" placeholder="Password" name="user_password" type="password" value="">
 								</div>
-
 
 								<input class="btn btn-lg btn-success btn-block" type="submit" value="login" name="login">
 

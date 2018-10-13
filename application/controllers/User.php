@@ -53,12 +53,10 @@ class User extends CI_Controller {
             $this->session->set_userdata('user_id',$data['user_id']);
             $this->session->set_userdata('user_email',$data['email']);
             $this->session->set_userdata('user_name',$data['username']);
+            $this->session->set_userdata('first_name', $data['first_name']);
+            $this->session->set_userdata('last_name', $data['last_name']);
     
             $this->load->view('user_profile.php');
-        }
-        else{
-            $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
-            redirect($this->uri->uri_string());
         }
     }
 
