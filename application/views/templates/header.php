@@ -62,7 +62,11 @@
 			</ul>
 			<ul class="list-unstyled login">
 				<li>
+				<?php if ($this->session->userdata('user_id')): ?>
+					<a href="/user/user_logout" class="login-btn">Logout</a>
+				<?php else: ?>
 					<a data-toggle="modal" href="#loginModal" class="login-btn">Login</a>
+				<?php endif; ?>
 				</li>
 			</ul>
 		</nav>

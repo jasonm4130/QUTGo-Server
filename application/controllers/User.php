@@ -55,8 +55,8 @@ class User extends CI_Controller {
             $this->session->set_userdata('user_name',$data['username']);
             $this->session->set_userdata('first_name', $data['first_name']);
             $this->session->set_userdata('last_name', $data['last_name']);
-    
-            $this->load->view('user_profile.php');
+
+            echo 'success';
         }
     }
 
@@ -66,6 +66,6 @@ class User extends CI_Controller {
 
     public function user_logout(){
         $this->session->sess_destroy();
-        redirect('user/login_view', 'refresh');
+        redirect(base_url());
     }
 }

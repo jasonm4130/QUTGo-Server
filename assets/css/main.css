@@ -7575,3 +7575,6 @@ a.details {
   a.details:hover {
     background: #004d8c;
     color: #fff; }
+
+#loginModal .modal-content .messages .alert {
+  display: none; }

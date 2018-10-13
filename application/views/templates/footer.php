@@ -6,6 +6,36 @@
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
+<script>
+$(document).on("click", "#loginModal .btn", function (event) {
+	event.preventDefault();
+	console.log('The form submitted');
+	$.ajax({
+		type: "POST",
+		url: "<?= base_url(); ?>user/login_user",
+		data: {
+			user_email: $('input[name=user_email]').val(),
+			user_password: $('input[name=user_password]').val(),
+		},
+		success: function (response) {
+			console.log(response);
+			if (response == 'success') {
+				$('.messages .alert-success').show();
+				$('.messages .alert-danger').hide();
+				$('.login-btn').text('Logout');
+				$('.login-btn').attr("href", "/user/user_logout");
+				$('.login-btn').removeAttr("data-toggle");
+				console.log('user logged in');
+			} else {
+				$('.messages .alert-danger').show();
+				$('.messages .alert-sucess').hide();
+				console.log('login unsuccessful');
+			}
+		},
+	});
+});
+</script>
+
 <!-- Modal -->
 <div class="modal fade" id="loginModal" role="dialog">
 	<div class="modal-dialog">
