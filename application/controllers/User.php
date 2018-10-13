@@ -23,7 +23,7 @@ class User extends CI_Controller {
         'password'=>md5($this->input->post('user_password')),
         );
         print_r($user);
-        $email_check=$this->user_model->email_check($user['user_email']);
+        $email_check=$this->user_model->email_check($user['email']);
         if($email_check){
             $this->user_model->register_user($user);
             $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
@@ -50,11 +50,11 @@ class User extends CI_Controller {
         $data=$this->user_model->login_user($user_login['user_email'],$user_login['user_password']);
         if($data)
         {
-            $this->session->set_userdata('user_id',$data['user_id']);
-            $this->session->set_userdata('user_email',$data['email']);
-            $this->session->set_userdata('user_name',$data['username']);
-            $this->session->set_userdata('first_name', $data['first_name']);
-            $this->session->set_userdata('last_name', $data['last_name']);
+            $this->session->set_userdata('user_id', $data['user_id']);
+            $this->session->set_userdata('user_email', $data['email']);
+            $this->session->set_userdata('user_name', $data['username']);
+            $this->session->set_userdata('firstname', $data['first_name']);
+            $this->session->set_userdata('lastname', $data['last_name']);
 
             echo 'success';
         }

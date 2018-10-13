@@ -2,7 +2,15 @@
 class User_model extends CI_model{
 
     public function register_user($user){
-        $this->db->insert('user', $user);
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('email',$email);
+        $query=$this->db->get();
+        if($query->num_rows() == 1){
+            $this->db->update('user', $user);
+        } else {
+            $this->db->insert('user', $user);
+        }
     }
  
     public function login_user($email,$pass){
@@ -28,9 +36,17 @@ class User_model extends CI_model{
         $this->db->where('email',$email);
         $query=$this->db->get();
     
-        if($query->num_rows()>0){
+        if($query->num_rows() == 1){
+            foreach ($query->result() as $row) {
+                if(!$row->password){
+                    return true;
+                }
+                return false;
+            }
             return false;
-        }else{
+        } elseif ($query->num_rows() > 1) {
+            return false;
+        } else {
             return true;
         }
     }

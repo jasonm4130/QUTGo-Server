@@ -29,7 +29,9 @@
 			</div>
 
 			<ul class="list-unstyled components">
-				<p>Welcome User Name</p>
+			<?php if ($this->session->userdata('user_id')): ?>
+				<p>Welcome <?= $this->session->userdata('firstname'); ?> <?= $this->session->userdata('lastname'); ?></p>
+			<?php endif; ?>
 				<li class="active">
 					<a href="#">Home</a>
 				</li>
