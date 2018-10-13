@@ -21,6 +21,8 @@ class User extends CI_Controller {
         'username'=>$this->input->post('user_name'),
         'email'=>$this->input->post('user_email'),
         'password'=>md5($this->input->post('user_password')),
+        'first_name'=>$this->input->post('first_name'),
+        'last_name'=>$this->input->post('last_name'),
         );
         $email_check=$this->user_model->email_check($user['email']);
         if($email_check){
@@ -29,7 +31,7 @@ class User extends CI_Controller {
             redirect('user/login_view');
         }
         else{
-            $this->session->set_flashdata('error_msg', 'Error occured,Try again.');
+            $this->session->set_flashdata('error_msg', 'That Email Address is already Registered');
             redirect('user');
         }
     }

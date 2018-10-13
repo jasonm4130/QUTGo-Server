@@ -38,20 +38,18 @@
 									<div class="form-group">
 										<input class="form-control" placeholder="Name" name="user_name" type="text" autofocus>
 									</div>
-
+									<div class="form-group">
+										<input class="form-control" placeholder="First Name" name="first_name" type="text" autofocus>
+									</div>
+									<div class="form-group">
+										<input class="form-control" placeholder="Last Name" name="last_name" type="text" autofocus>
+									</div>
+									
 									<div class="form-group">
 										<input class="form-control" placeholder="E-mail" name="user_email" type="email" autofocus>
 									</div>
 									<div class="form-group">
 										<input class="form-control" placeholder="Password" name="user_password" type="password" value="">
-									</div>
-
-									<div class="form-group">
-										<input class="form-control" placeholder="Age" name="user_age" type="number" value="">
-									</div>
-
-									<div class="form-group">
-										<input class="form-control" placeholder="Mobile No" name="user_mobile" type="number" value="">
 									</div>
 
 									<input class="btn btn-lg btn-success btn-block" type="submit" value="Register" name="register">
