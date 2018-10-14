@@ -28,7 +28,7 @@ $(document).on("click", "#loginModal .btn", function (event) {
 				console.log('user logged in');
 			} else {
 				$('.messages .alert-danger').show();
-				$('.messages .alert-sucess').hide();
+				$('.messages .alert-success').hide();
 				console.log('login unsuccessful');
 			}
 		},
