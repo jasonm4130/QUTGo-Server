@@ -16,7 +16,6 @@
 	<?= script_tag('assets/js/Chart.min.js'); ?>
 	<?= script_tag('assets/js/bootstrap.min.js'); ?>
 	<?= script_tag('assets/js/main.js'); ?>
-	testing
 </head>
 
 <body>
