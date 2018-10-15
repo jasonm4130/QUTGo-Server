@@ -28,7 +28,7 @@ class User extends CI_Controller {
         if($email_check){
             $this->user_model->register_user($user);
             $this->session->set_flashdata('success_msg', 'Registered successfully.Now login to your account.');
-            redirect('user/login_view');
+            redirect(base_url());
         }
         else{
             $this->session->set_flashdata('error_msg', 'That Email Address is already Registered');
