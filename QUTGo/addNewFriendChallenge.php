@@ -1,7 +1,7 @@
 <?php
 /**
 * Require database connection and timezone setup code
-* 
+*
 * @define (MySQLi_Connect) $connect - A MySQLi_Connect variable containing the database connection information
 */
 require 'setup.php';
@@ -21,19 +21,19 @@ mysqli_close($connect);
 
 /**
 * addNewFriendChallenge
-* 
+*
 * Returns a JSON object containing a success/failure notification if the friendship request has been sent
-* 
+*
 * @pre (String) $block - Must contain exactly: 'a','b','c','d','e','f','g','h','j','m','n','o','p','q','r','s','u','v','w','x','y','z'
 * @pre (String) $type - Must contain exactly: 'friend', 'coop'
-* 
+*
 * @param (MySQLi_Connect) $connect - MySQLi_Connect variable containing the database connection information
 * @param (Integer) $challengee - Integer variable containing the receiving user's ID
 * @param (Integer) $challenger - Integer variable containing the sending user's ID
 * @param (String) $block - String variable containing the challege's block
 * @param (String) $type - String variable containing type of challenge
 * @param (Optional, String) $message - Optional string variable containing the user's message
-* 
+*
 * @return (JSON) $success - JSON encoded String variable containing a success/failure message
 */
 function addNewFriendChallenge($connect, $challengee, $challenger, $block, $type, $message){
@@ -51,20 +51,20 @@ function addNewFriendChallenge($connect, $challengee, $challenger, $block, $type
 		*/
 		$sql = "INSERT INTO challenge (challengee, challenger, block, type, message) VALUES ('$challengee', '$challenger', '$block', '$type', '$message')";
 	}
-	
+
 	/* Run the query */
 	$result = mysqli_query($connect, $sql);
-	
+
 	/* Chect the number of modified rows */
 	$rows = mysqli_affected_rows($connect);
-	
+
 	/* Set the result */
 	if($rows >= 1){
-		$success = "Challenge succesfully added";
+		$success = "Challenge successfully added";
 	} else {
 		$success = "Error challenge not added";
 	}
-	
+
 	/* Return json */
 	echo '{"result":"' . $success . '"}';
 }
