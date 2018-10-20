@@ -18,7 +18,7 @@ class Statistics extends CI_Controller {
         $data['lastWeek'] = $this->stats_model->getLastWeekDates();
         $data['thisWeek'] = $this->stats_model->getThisWeekDates();
 
-        $data['friends'] = $this->stats_model->getFriends($id);
+        // $data['friends'] = $this->stats_model->getFriends($id);
 
         $data['title'] = 'Statistics';
 
