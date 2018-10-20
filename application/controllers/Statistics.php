@@ -18,10 +18,14 @@ class Statistics extends CI_Controller {
         $data['lastWeek'] = $this->stats_model->getLastWeekDates();
         $data['thisWeek'] = $this->stats_model->getThisWeekDates();
 
+        $data['friends'] = $this->stats_model->getFriends($id);
+
         $data['title'] = 'Statistics';
 
         $this->load->view('templates/header', $data);
         $this->load->view('stats/index', $data);
         $this->load->view('templates/footer');
     }
+
+
 }

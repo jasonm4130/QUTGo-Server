@@ -33,33 +33,33 @@
 				<p>Welcome <?= $this->session->userdata('firstname'); ?> <?= $this->session->userdata('lastname'); ?></p>
 			<?php endif; ?>
 				<li class="active">
-					<a href="#">Home</a>
+					<a href="/">Home</a>
 				</li>
 				<li>
 					<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Dashboard</a>
 					<ul class="collapse list-unstyled" id="pageSubmenu">
-						<li>
+						<!-- <li>
 							<a href="/dashboard/challenges">Your Challenges</a>
-						</li>
+						</li> -->
 						<li>
 							<a href="/dashboard/statistics">Statistics</a>
 						</li>
-						<li>
+						<!-- <li>
 							<a href="/dashboard/trends">Weekly Trends</a>
-						</li>
+						</li> -->
 					</ul>
 				</li>
 				<li>
-					<a href="#">Contact Us</a>
+					<a href="mailto:qutgo@gmail.com">Contact Us</a>
 				</li>
 			</ul>
 
 			<ul class="list-unstyled CTAs">
 				<li>
-					<a href="#" class="download">Download QUT Go</a>
+					<a href="/QUTGo/update/app-release.apk" class="download">Download QUT Go</a>
 				</li>
 				<li>
-					<a href="#" class="article">Report an Issue</a>
+					<a href="mailto:qutgo@gmail.com" class="article">Report an Issue</a>
 				</li>
 			</ul>
 			<ul class="list-unstyled login">

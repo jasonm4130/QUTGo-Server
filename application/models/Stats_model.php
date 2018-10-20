@@ -16,6 +16,24 @@ class stats_model extends CI_Model {
                 return $query->result_array();
         }
 
+        public function getFriends($userId = 262){
+                $this->db->select('*');
+                $this->db->from('relationship');
+                $this->db->where('user_one', $userId);
+
+                $friends = $this->db->get();
+
+                foreach($friends as $friend){
+                        $this->db->select('*');
+                        $this->db->from('user');
+                        $this->db->where('user_id', toString($friend['user_two']));
+
+                        $friendsArray .= $this->db->get();
+                }
+
+                return $friendsArray;
+        }
+
         public function getLastWeekDates()
         {
                 $lastWeek = array();

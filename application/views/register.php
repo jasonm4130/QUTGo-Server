@@ -36,7 +36,7 @@
 							<form role="form" method="post" action="<?php echo base_url('user/register_user'); ?>">
 								<fieldset>
 									<div class="form-group">
-										<input class="form-control" placeholder="Name" name="user_name" type="text" autofocus>
+										<input class="form-control" placeholder="User Name" name="user_name" type="text" autofocus>
 									</div>
 									<div class="form-group">
 										<input class="form-control" placeholder="First Name" name="first_name" type="text" autofocus>

@@ -14,6 +14,8 @@
 		</div>
 	</div>
 
+	<?php var_dump($friends); ?>
+
 
 
 </div>
