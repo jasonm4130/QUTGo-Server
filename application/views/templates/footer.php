@@ -21,7 +21,7 @@ $(document).on("click", "#loginModal .btn", function (event) {
 				$('.login-btn').text('Logout');
 				$('.login-btn').attr("href", "/user/user_logout");
 				$('.login-btn').removeAttr("data-toggle");
-				$('#loginModal').toggle();
+				$('#loginModal').modal('toggle');
 				console.log('user logged in');
 			} else {
 				$('.messages .alert-danger').show();
