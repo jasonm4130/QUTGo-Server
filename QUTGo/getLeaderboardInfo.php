@@ -177,8 +177,10 @@ function getGroupUsers($connect, $groupid){
 		SELECT user AS user_id
 		FROM membership
 		WHERE group_id = '$groupid'
+		AND (type = 'member'
+		OR type = 'admin')
 	*/
-	$sql = "SELECT user AS user_id FROM membership WHERE group_id = '$groupid'";
+	$sql = "SELECT user AS user_id FROM membership WHERE group_id = '$groupid' AND (type = 'member' OR type = 'admin')";
 
 	/* Run the query */
 	$result = mysqli_query($connect, $sql);
