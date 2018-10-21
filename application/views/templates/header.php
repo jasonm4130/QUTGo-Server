@@ -8,7 +8,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>QUT Go</title>
+	<title>QUTgo Dashboard</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?= link_tag('assets/css/main.css'); ?>
@@ -25,7 +25,7 @@
 		<!-- Sidebar Holder -->
 		<nav id="sidebar">
 			<div class="sidebar-header">
-				<h3>QUT Go <br>Dashboard</h3>
+				<h3>QUTgo<br>Dashboard</h3>
 			</div>
 
 			<ul class="list-unstyled components">
