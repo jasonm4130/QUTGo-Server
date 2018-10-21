@@ -56,7 +56,7 @@
 
 			<ul class="list-unstyled CTAs">
 				<li>
-					<a href="/QUTGo/update/app-release.apk" class="download">Download QUT Go</a>
+					<a href="/QUTGo/update/app-release.apk" class="download">Download QUTgo</a>
 				</li>
 				<li>
 					<a href="mailto:qutgo.help@gmail.com" class="article">Report an Issue</a>
