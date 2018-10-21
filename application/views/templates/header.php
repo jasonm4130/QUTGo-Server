@@ -50,7 +50,7 @@
 					</ul>
 				</li>
 				<li>
-					<a href="mailto:qutgo@gmail.com">Contact Us</a>
+					<a href="mailto:qutgo.help@gmail.com">Contact Us</a>
 				</li>
 			</ul>
 
@@ -59,7 +59,7 @@
 					<a href="/QUTGo/update/app-release.apk" class="download">Download QUT Go</a>
 				</li>
 				<li>
-					<a href="mailto:qutgo@gmail.com" class="article">Report an Issue</a>
+					<a href="mailto:qutgo.help@gmail.com" class="article">Report an Issue</a>
 				</li>
 			</ul>
 			<ul class="list-unstyled login">
