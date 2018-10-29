@@ -23,10 +23,10 @@
       Choose a username/password - the username is mostly for internal purposes, so as long as you remember your email and password to the site, you will be good to go!</p>
 
     <div class="row">
-      <div class="col-sm-6 justify-content-center">
+      <div class="col-sm-6 d-flex justify-content-center">
         <a class="btn btn-primary" href="/QUTGo/update/app-release.apk">Download QUTgo</a>
       </div>
-      <div class="col-sm-6 justify-content-center">
+      <div class="col-sm-6 d-flex justify-content-center">
         <a class="btn btn-secondary" href="qutgo.help@gmail.com">Contact Us</a>
       </div>
     </div>
