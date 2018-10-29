@@ -75,6 +75,14 @@
 		}
 	});
 
+	<?php foreach($thisWeek as $day){
+		$key = array_search($day, array_column($steps, 'date'));
+		echo 'console.log("' . $key . '");';
+		if ($key) {
+			echo 'console.log("' . $steps[$key]['steps'] . '");';
+		}
+	} ?>
+
 	var ctx = document.getElementById("stackedChart").getContext("2d");
 	var stackedLine = new Chart(ctx, {
 		type: 'bar',
