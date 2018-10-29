@@ -3,20 +3,15 @@
 
 	<!-- Graphs and Stuff -->
 	<div class="row">
-		<div class="col-md-8 col-sm-12">
+		<div class="col-12">
+			<h3>Weekly Overview</h3>
 			<canvas id="lineChart"></canvas>
 		</div>
-		<div class="col-md-4 col-sm-6">
-			<canvas id="radarChart"></canvas>
-		</div>
 		<div class="col-12">
+			<h3>You vs Your Friends</h3>
 			<canvas id="stackedChart"></canvas>
 		</div>
 	</div>
-
-	<!-- <?php var_dump($friends); ?> -->
-
-
 
 </div>
 </div>
@@ -36,6 +31,7 @@
 				data: [
 					<?php foreach($thisWeek as $day){
 							$key = array_search($day, array_column($steps, 'date'));
+							echo $key;
 							if ($key) {
 								echo $steps[$key]['steps'] . ', ';
 							} else {
@@ -78,32 +74,6 @@
 		}
 	});
 
-	var ctx = document.getElementById("radarChart").getContext('2d');
-	var myRadarChart = new Chart(ctx, {
-		type: 'radar',
-		data: {
-			labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-			datasets: [{
-				label: "Last Year",
-				data: [stepNumber(20000, 450000), stepNumber(20000, 450000), stepNumber(20000, 450000), stepNumber(20000,
-					450000), stepNumber(20000, 450000), stepNumber(20000, 450000), stepNumber(20000, 450000), stepNumber(20000,
-					450000), stepNumber(20000, 450000), stepNumber(20000, 450000), stepNumber(20000, 450000), stepNumber(20000,
-					450000)],
-				borderColor: ['rgba(247,73,6,1)'],
-				backgroundColor: ['rgba(247,73,6,0.1)'],
-				borderWidth: 1
-			}, {
-				label: "Current Year",
-				data: [stepNumber(20000, 450000), stepNumber(20000, 450000), stepNumber(20000, 450000), stepNumber(20000,
-					450000), stepNumber(20000, 450000), stepNumber(20000, 450000), stepNumber(20000, 450000), stepNumber(20000,
-					450000), stepNumber(20000, 450000)],
-				borderColor: ['rgba(85,78,68,1)'],
-				backgroundColor: ['rgba(85,78,68,0.1)'],
-				borderWidth: 1
-			}]
-		}
-	});
-
 	var ctx = document.getElementById("stackedChart").getContext("2d");
 	var stackedLine = new Chart(ctx, {
 		type: 'bar',
@@ -111,45 +81,37 @@
 			labels: ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"],
 			datasets: [{
 				label: 'You',
-				data: [stepNumber(2000, 45000), stepNumber(2000, 45000), stepNumber(2000, 45000), stepNumber(2000, 45000),
-					stepNumber(2000, 45000), stepNumber(2000, 45000), stepNumber(2000, 45000)
-				],
+				data: [<?php foreach($thisWeek as $day){
+							$key = array_search($day, array_column($steps, 'date'));
+							if ($key) {
+								echo $steps[$key]['steps'] . ', ';
+							} else {
+								echo '0, ';
+							}
+						} ?>],
 				borderColor: [
-					'rgba(255,116,115,1)'
+					'rgba(196, 69, 105,.5)'
 				],
-				backgroundColor: 'rgba(255,116,115,0.1)',
+				backgroundColor: 'rgba(196, 69, 105,.5)',
 				borderWidth: 1
-			}, {
-				label: 'Jason',
-				data: [stepNumber(2000, 45000), stepNumber(2000, 45000), stepNumber(2000, 45000), stepNumber(2000, 45000),
-					stepNumber(2000, 45000), stepNumber(2000, 45000), stepNumber(2000, 45000)
-				],
-				borderColor: [
-					'rgba(255,201,82,1)'
-				],
-				backgroundColor: 'rgba(255,201,82,0.1)',
-				borderWidth: 1
-			}, {
-				label: 'Luke',
-				data: [stepNumber(2000, 45000), stepNumber(2000, 45000), stepNumber(2000, 45000), stepNumber(2000, 45000),
-					stepNumber(2000, 45000), stepNumber(2000, 45000), stepNumber(2000, 45000)
-				],
-				borderColor: [
-					'rgba(71,184,224,1)'
-				],
-				backgroundColor: 'rgba(71,184,224,0.1)',
-				borderWidth: 1
-			}, {
-				label: 'Daniel',
-				data: [stepNumber(2000, 45000), stepNumber(2000, 45000), stepNumber(2000, 45000), stepNumber(2000, 45000),
-					stepNumber(2000, 45000), stepNumber(2000, 45000), stepNumber(2000, 45000)
-				],
-				borderColor: [
-					'rgba(52,49,76,1)'
-				],
-				backgroundColor: 'rgba(52,49,76,0.1)',
-				borderWidth: 1
-			}]
+			},
+				<?php $colors = array("rgba(245, 205, 121,.5)", "rgba(84, 109, 229,.5)", "rgba(247, 143, 179,.5)", "rgba(99, 205, 218,.5)", "rgba(87, 75, 144,.5)"); ?>
+				<?php $i = 0; ?>
+				<?php foreach($friendsNames as $friend): ?>{
+					label: '<?= $friend; ?>',
+					data: [<?php foreach($thisWeek as $day){
+								$key = array_search($day, array_column($friendStats[$i], 'date'));
+								if ($key) {
+									echo $friendStats[$i][$key]['steps'] . ', ';
+								} else {
+									echo '0, ';
+								}
+							} ?>],
+					borderColor: ['<?= $colors[$i]; ?>'],
+					backgroundColor: '<?= $colors[$i]; ?>',
+					borderWidth: 1
+				},<?php $i++; ?><?php endforeach; ?>
+			]
 		},
 		options: {
 			tooltips: {
