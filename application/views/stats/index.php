@@ -13,8 +13,6 @@
 		</div>
 	</div>
 
-
-
 </div>
 </div>
 
@@ -33,6 +31,7 @@
 				data: [
 					<?php foreach($thisWeek as $day){
 							$key = array_search($day, array_column($steps, 'date'));
+							echo $key;
 							if ($key) {
 								echo $steps[$key]['steps'] . ', ';
 							} else {
@@ -75,14 +74,6 @@
 		}
 	});
 
-	<?php foreach($thisWeek as $day){
-		$key = array_search($day, array_column($steps, 'date'));
-		echo 'console.log("' . $key . '");';
-		if ($key) {
-			echo 'console.log("' . $steps[$key]['steps'] . '");';
-		}
-	} ?>
-
 	var ctx = document.getElementById("stackedChart").getContext("2d");
 	var stackedLine = new Chart(ctx, {
 		type: 'bar',
@@ -104,22 +95,23 @@
 				backgroundColor: 'rgba(196, 69, 105,.5)',
 				borderWidth: 1
 			},
-			<?php $colors = array("rgba(245, 205, 121,.5)", "rgba(84, 109, 229,.5)", "rgba(247, 143, 179,.5)", "rgba(99, 205, 218,.5)", "rgba(87, 75, 144,.5)"); ?>
-			<?php $i = 0; ?>
-			<?php foreach($friendsNames as $friend): ?>{
-				label: '<?= $friend; ?>',
-				data: [<?php foreach($thisWeek as $day){
-							$key = array_search($day, array_column($friendStats[$i], 'date'));
-							if ($key) {
-								echo $steps[$key]['steps'] . ', ';
-							} else {
-								echo '0, ';
-							}
-						} ?>],
-				borderColor: ['<?= $colors[$i]; ?>'],
-				backgroundColor: '<?= $colors[$i]; ?>',
-				borderWidth: 1
-			},<?php $i++; ?><?php endforeach; ?>]
+				<?php $colors = array("rgba(245, 205, 121,.5)", "rgba(84, 109, 229,.5)", "rgba(247, 143, 179,.5)", "rgba(99, 205, 218,.5)", "rgba(87, 75, 144,.5)"); ?>
+				<?php $i = 0; ?>
+				<?php foreach($friendsNames as $friend): ?>{
+					label: '<?= $friend; ?>',
+					data: [<?php foreach($thisWeek as $day){
+								$key = array_search($day, array_column($friendStats[$i], 'date'));
+								if ($key) {
+									echo $friendStats[$i][$key]['steps'] . ', ';
+								} else {
+									echo '0, ';
+								}
+							} ?>],
+					borderColor: ['<?= $colors[$i]; ?>'],
+					backgroundColor: '<?= $colors[$i]; ?>',
+					borderWidth: 1
+				},<?php $i++; ?><?php endforeach; ?>
+			]
 		},
 		options: {
 			tooltips: {
