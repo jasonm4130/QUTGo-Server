@@ -23,5 +23,6 @@
       Choose a username/password - the username is mostly for internal purposes, so as long as you remember your email and password to the site, you will be good to go!</p>
 
     <a href="/QUTGo/update/app-release.apk">Download QUTgo</a>
+    test
 </div>
 </div>
