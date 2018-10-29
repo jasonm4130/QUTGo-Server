@@ -21,5 +21,7 @@
       This website also offers a place for users to communicate with the current owners of QUT Go.</p>
     <p>To sign up for the site, click 'Login' on the left then select Sign Up. Input the same email, First Name, and Last Name as your QUTgo account so that we can verify it is you.
       Choose a username/password - the username is mostly for internal purposes, so as long as you remember your email and password to the site, you will be good to go!</p>
+
+    <a href="/QUTGo/update/app-release.apk" class="download">Download QUTgo</a>
 </div>
 </div>
